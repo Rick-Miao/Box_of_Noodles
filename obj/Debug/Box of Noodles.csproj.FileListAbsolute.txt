@@ -1,0 +1,20 @@
+D:\mpz\Assignment2大作业2\code\Box of Noodles\bin\Debug\Box of Noodles.exe.config
+D:\mpz\Assignment2大作业2\code\Box of Noodles\bin\Debug\Box of Noodles.exe
+D:\mpz\Assignment2大作业2\code\Box of Noodles\bin\Debug\Box of Noodles.pdb
+D:\mpz\Assignment2大作业2\code\Box of Noodles\obj\Debug\Box of Noodles.csproj.AssemblyReference.cache
+D:\mpz\Assignment2大作业2\code\Box of Noodles\obj\Debug\Box_of_Noodles.Form1.resources
+D:\mpz\Assignment2大作业2\code\Box of Noodles\obj\Debug\Box_of_Noodles.Properties.Resources.resources
+D:\mpz\Assignment2大作业2\code\Box of Noodles\obj\Debug\Box of Noodles.csproj.GenerateResource.cache
+D:\mpz\Assignment2大作业2\code\Box of Noodles\obj\Debug\Box of Noodles.csproj.CoreCompileInputs.cache
+D:\mpz\Assignment2大作业2\code\Box of Noodles\obj\Debug\Box of Noodles.exe
+D:\mpz\Assignment2大作业2\code\Box of Noodles\obj\Debug\Box of Noodles.pdb
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\bin\Debug\Box of Noodles.exe.config
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\bin\Debug\Box of Noodles.exe
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\bin\Debug\Box of Noodles.pdb
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\obj\Debug\Box of Noodles.csproj.AssemblyReference.cache
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\obj\Debug\Box_of_Noodles.Form1.resources
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\obj\Debug\Box_of_Noodles.Properties.Resources.resources
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\obj\Debug\Box of Noodles.csproj.GenerateResource.cache
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\obj\Debug\Box of Noodles.csproj.CoreCompileInputs.cache
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\obj\Debug\Box of Noodles.exe
+E:\学习文件\C#-Programming Principles\homework\大作业2\Box of Noodles\obj\Debug\Box of Noodles.pdb
