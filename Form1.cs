@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 
 namespace Box_of_Noodles {
+
     public partial class Form1 : Form {
         /// <summary>
         /// 2322441018
@@ -9,54 +10,47 @@ namespace Box_of_Noodles {
         /// This program is designed for the order noodles.
         /// </summary>
 
+        // Some usefull const number.
+        private const double BASE_NOODLE_PRICE = 5.5;
+        private const double SEAFOOD_PRICE = 7.0;
+        private const double OTHER_MEAT_PRICE = 5.0;
+        private const int FREE_VEGETABLE_LIMIT = 4;
+        private const double EXTRA_VEGETABLE_PRICE = 0.5;
+        private const double BIG_SERVE_MULTIPLIER = 1.5;
+        private const double USD_EXCHANGE_RATE = 0.64;
+
         public Form1() {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Click the button and caculate the total cost of the order
+        /// Click the button and calculate the total cost of the order
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button_calculate_Click(object sender, EventArgs e) {
-            // Check the noodle type
-            foreach (RadioButton item in groupBox_noodleType.Controls) {
-                if (item.Checked) {
-                    // Check the flavour
-                    if (comboBox_flavour.Text != "") {
-                        // Check the name
-                        if (textBox_name.Text != "") {
-                            // Caculate the price and display
-                            UpdatePrice();
-                            ControlOrderDetails(true);
-                            return;
-                        }
-                        MessageBox.Show("Please supply a name for this order!");
-                        return;
-                    }
-                    MessageBox.Show("Please select a flavour!");
-                    return;
-                }
+            if (InformationIsValid()) {
+                UpdatePrice();
+                ControlOrderDetails(true);
             }
-            MessageBox.Show("Please select a noodle type!");
         }
 
         /// <summary>
-        /// Caculate the price
+        /// Calculate the price
         /// </summary>
         private void UpdatePrice() {
             // The base cost of noodles
-            double baseCost = 5.5;
+            double baseCost = BASE_NOODLE_PRICE;
 
             // Check the meat type
             foreach (Control item in groupBox_addMeat.Controls) {
                 if (item is RadioButton button && button.Checked) {
-                    // Seafoof is $7 and others are $ 5
-                    baseCost += button.Text == "Seafood" ? 7 :
-                               button.Text == "None" ? 0 : 5;
+                    // Seafood is $7 and others are $ 5
+                    baseCost += button.Text == "Seafood" ? SEAFOOD_PRICE :
+                               button.Text == "None" ? 0 : OTHER_MEAT_PRICE;
                 }
             }
-            // Count the numver of vegetable
+            // Count the number of vegetable
             int vegetableCount = 0;
             foreach (CheckBox item in groupBox_addVegetables.Controls) {
                 if (item.Checked) {
@@ -64,15 +58,15 @@ namespace Box_of_Noodles {
                 }
             }
             // If vegetable number is over 4, we need to add more money
-            if (vegetableCount > 4) {
-                baseCost += 0.5 * (vegetableCount - 4);
+            if (vegetableCount > FREE_VEGETABLE_LIMIT) {
+                baseCost += EXTRA_VEGETABLE_PRICE * (vegetableCount - FREE_VEGETABLE_LIMIT);
             }
             // If customer need big serve 
             if (checkBox_bigServe.Checked) {
-                baseCost *= 1.5;
+                baseCost *= BIG_SERVE_MULTIPLIER;
             }
             // 1 aud = 0.64 usd (2025.5.10)
-            double displayCost = radioButton_aud.Checked ? baseCost : baseCost * 0.64;
+            double displayCost = radioButton_aud.Checked ? baseCost : baseCost * USD_EXCHANGE_RATE;
             textBox_order.Text = string.Format("${0:f2}", displayCost);
         }
 
@@ -88,16 +82,45 @@ namespace Box_of_Noodles {
         /// <summary>
         /// Control the show and hide the order details.
         /// </summary>
-        /// <param name="option">show or hide</param>
-        private void ControlOrderDetails(bool option) {
-            label_orderText.Visible = option;
-            textBox_order.Visible = option;
-            groupBox_currency.Visible = option;
+        /// <param name="isVisible ">show or hide</param>
+        private void ControlOrderDetails(bool isVisible) {
+            label_orderText.Visible = isVisible;
+            textBox_order.Visible = isVisible;
+            groupBox_currency.Visible = isVisible;
         }
 
         // When change the big serve or usd/aud
         private void UpdatePrice(object sender, EventArgs e) {
             UpdatePrice();
+        }
+
+        /// <summary>
+        /// Check three information is given or not.
+        /// </summary>
+        /// <returns></returns>
+        private bool InformationIsValid() {
+            // Check the noodle type is checked or not
+            bool noodleTypeIsCheck = false;
+            foreach (RadioButton item in groupBox_noodleType.Controls) {
+                if (item.Checked) {
+                    noodleTypeIsCheck = true;
+                }
+            }
+            if (!noodleTypeIsCheck) {
+                MessageBox.Show("Please select a noodle type!");
+                return false;
+            }
+            // Check the name is supply or not
+            if (textBox_name.Text == "") {
+                MessageBox.Show("Please supply a name for this order!");
+                return false;
+            }
+            // Check the flavour is selected or not
+            if (comboBox_flavour.Text == "") {
+                MessageBox.Show("Please select a flavour!");
+                return false;
+            }
+            return true;
         }
     }
 }
